@@ -29,7 +29,10 @@ configure: error: C compiler cannot create executables
 
 ##3.编译工程
 * 解压currend_head.zip
-* 修改currend_head/src/CMakeLists.txt，加入set(BOOST_ROOT /usr/local/Library/boost);加入set(Boost_USE_STATIC_LIBS ON)。这里/usr/local/Library/boost就是在2编译boost中修改的path
+* 修改currend_head/src/CMakeLists.txt，加入set(BOOST_ROOT /usr/local/Library/boost)。这里/usr/local/Library/boost就是在2编译boost中修改的path
+* 如果进行静态编译的话，添加set(Boost_USE_STATIC_LIBS ON)，执行完“3.编译工程”就可以结束了，不用执行“4.引入动态库”；如果进行动态编译，则继续下一步，并执行“4.引入动态库”
+
+
 ```javascript
 #修改前
 PROJECT(JZP_EYE_TRACKING)
@@ -45,14 +48,20 @@ include(cmake/OptimizeForArchitecture.cmake)
 OptimizeForArchitecture()
 include(./dlib/cmake)
 set(BOOST_ROOT /usr/local/Library/boost)
+#静态编译才要添加下面这行
 set(Boost_USE_STATIC_LIBS ON)
 ......
 ```
-* 编译工程，在current_head下执行./directbuild.sh进行编译。至此，工程编译完成，可以执行。
-* 执行时如果报出没有引入boost_system等动态库的话，执行第4步
+* 编译工程，在current_head下执行./directbuild.sh进行编译。至此，工程编译完成，可以执行。如果报错没有引入boost_system等动态库的话，执行第4步
 
-##4.引入动态库（非必须）
+##4.引入动态库（动态编译需要）
+* 为了简化过程，附录中有shell脚本文件add_DynamincLib.sh
+* add_DynamincLib.sh放置在current_head所在目录下这个shell文件和工程文件夹在同级目录下）
 
+
+
+##问题反馈
+在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
 * email: <liuyang070424@gmail.com>
 * QQ: 359250464
