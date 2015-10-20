@@ -28,9 +28,10 @@ configure: error: C compiler cannot create executables
 * 修改后当前目录下执行./boost_Download_Compile.sh
 
 ##3.编译工程
-* 解压currend_head.zip
-* 修改currend_head/src/CMakeLists.txt，加入set(BOOST_ROOT /usr/local/Library/boost)。这里/usr/local/Library/boost就是在2编译boost中修改的path
-* 如果进行静态编译的话，添加set(Boost_USE_STATIC_LIBS ON)，执行完“3.编译工程”就可以结束了，不用执行“4.引入动态库”；如果进行动态编译，则继续下一步，并执行“4.引入动态库”
+* 解压currend_head.zip，为了简化调整编译参数的过程，附录中有shell脚本文件project_Modify.sh
+* project_Modify.sh放置在current_head所在目录下（这个shell文件和工程文件夹在同级目录下）
+* 先修改参数choose。choose=“dynamic”的话是动态编译，否则是静态编译
+* 如果进行静态编译的话，执行完“3.编译工程”就可以结束了，不用执行“4.引入动态库”；如果进行动态编译，则继续下一步，并执行“4.引入动态库”
 
 
 ```javascript
