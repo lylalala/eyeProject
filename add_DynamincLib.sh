@@ -23,7 +23,7 @@ done
 #str=("/usr/local/Library/boost/lib/libboost_thread.dylib")
 #str=("current_head/lib/libjzplib.dylib")
 #str=("current_head/lib/libasmlib.dylib" "${path}/lib/libboost_filesystem.dylib" "${path}/lib/libboost_chrono.dylib" "${path}/lib/libboost_timer.dylib" "${path}/lib/libboost_thread.dylib" "current_head/lib/libjzplib.dylib")
-str="current_head/lib/libasmlib.dylib ${path}/lib/libboost_filesystem.dylib ${path}/lib/libboost_chrono.dylib ${path}/lib/libboost_timer.dylib ${path}/lib/libboost_thread.dylib current_head/lib/libjzplib.dylib"
+str="current_head/lib/libasmlib.dylib ${path}/lib/libboost_filesystem.dylib ${path}/lib/libboost_chrono.dylib ${path}/lib/libboost_timer.dylib ${path}/lib/libboost_thread.dylib ${path}/lib/libboost_python.dylib current_head/lib/libjzplib.dylib current_head/lib/asmgazetracker.so current_head/lib/np_opencv_converter.so"
 
 for element in ${str}
 do
