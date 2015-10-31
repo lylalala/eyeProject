@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import copy as cp
 
+diskStrelKernel = np.array([[0,1,0],[1,1,1],[0,1,1]],dtype=np.uint8)
 
 def allKindsOfPattern(ringWidth,diskSize):
     global splitRate
@@ -15,6 +16,7 @@ def allKindsOfPattern(ringWidth,diskSize):
         #for j in xrange(1,ringWidth+1):
             #ring = MidpointCircle(ring,diskSize[i]-j+1,diskSize[i],diskSize[i],1)
         cv2.circle(ring,(np.int32(diskSize[i]),np.int32(diskSize[i])),np.int32(diskSize[i]),1)
+        ring = cv2.dilate(ring,diskStrelKernel)
         ringTemplateTop=[]
         #print 'i=%d'%i
         #print ring

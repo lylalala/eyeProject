@@ -16,13 +16,16 @@ def fillHoleInBinary(Img,binaryImg):
 
 if __name__=="__main__":
     efficient=np.array([1,0.2,0.2,0.9])
-    Img=cv2.imread('/Users/ly/Code/picAfter/eye12_1.jpg')
-    cv2.imshow('Img',Img)
-    cv2.waitKey()
+    #Img=cv2.imread('/Users/ly/Code/picAfter/1.png')
+    
+    Img=cv2.imread('/Users/ly/Code/picAfter/eye40_1.jpg')
+    print Img.shape
+    #cv2.imshow('Img',Img)
+    #cv2.waitKey()
     grayImg=cv2.cvtColor(Img,cv2.COLOR_BGR2GRAY)
-    ret,binaryImg=cv2.threshold(grayImg,70,255,cv2.THRESH_BINARY)
-    cv2.imshow('binaryImg',binaryImg)
-    cv2.waitKey()
+    ret,binaryImg=cv2.threshold(grayImg,127,255,cv2.THRESH_BINARY)
+    #cv2.imshow('binaryImg',binaryImg)
+    #cv2.waitKey()
     noHoleImg=fillHoleInBinary(Img,binaryImg)
     cv2.imshow('noHoleImg',noHoleImg)
     cv2.waitKey()
@@ -55,6 +58,68 @@ if __name__=="__main__":
     labels=np.uint8(255-np.reshape(labels,(Img.shape[1],Img.shape[0])).T*127)
     cv2.imshow('kmenas',labels)
     cv2.waitKey()
+
+    topShelter=[]
+    bottomShelter=[]
+    img=labels
+    center=(np.int64(74),np.int64(50))
+    #print type(center)
+    #print type(center[0])
+    radius=33.0
+    radius=np.float64(radius)
+    #print type(radius)
+    #cv2.circle(Img,tuple(np.int32(np.squeeze(center))),1,(0,0,255))
+    #cv2.circle(Img,tuple(np.int32(np.squeeze(center))),np.int32(radius),(0,0,255))
+    #cv2.imshow('hello',Img)
+    #cv2.waitKey()
+
+    radius=int(round(radius))
+    topedge=center[1]-radius
+    bottomedge=center[1]+radius
+    
+    #print topedge#17
+    #print bottomedge#83
+    #print center[1]#50
+    #eye1=img[topedge:center[1],center[0]]
+    #eye2=img[center[1]+1:bottomedge+1,center[0]]
+    #print eye1
+    #print eye2
+    
+    #print range(topedge,center[1])[::-1]
+    for i in range(topedge,center[1])[::-1]:#[49-17]
+        if img[i,center[0]]!=128:
+            top=i
+            break
+    #print range(center[1]+1,bottomedge+1)
+    for i in range(center[1]+1,bottomedge+1):#[51-83]
+        if img[i,center[0]]!=128:
+            bottom=i
+            break
+
+    #img[topedge:center[1],center[0]]=100
+    #img[center[1]+1:bottomedge+1,center[0]]=100
+    #cv2.imshow('LAST',img)
+    #cv2.waitKey()
+
+
+#   print radius
+#   print 'top'
+#   print center[1]-top
+#   print center[1]-top-1
+#   print 'bottom'
+#   print bottom-center[1]
+#   print bottom-center[1]-1
+
+    #radius
+    topShelter.append(center[1]-top-1)
+    topShelter.append(center[1]-top)
+    bottomShelter.append(bottom-center[1]-1)
+    bottomShelter.append(bottom-center[1])
+
+
+
+
+
 
 
 
