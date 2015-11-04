@@ -18,7 +18,7 @@ if __name__=="__main__":
     efficient=np.array([1,0.2,0.2,0.9])
     #Img=cv2.imread('/Users/ly/Code/picAfter/1.png')
     
-    Img=cv2.imread('/Users/ly/Code/picAfter/eye40_1.jpg')
+    Img=cv2.imread('/Users/ly/Code/picAfter/eye2_1.jpg')
     print Img.shape
     #cv2.imshow('Img',Img)
     #cv2.waitKey()
