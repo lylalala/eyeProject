@@ -1,4 +1,3 @@
-#test_branch
 import numpy as np
 import cv2
 
