@@ -4,6 +4,7 @@ from sklearn.cluster import KMeans
 import cv2
 #coding=utf-8
 
+
 def fillHoleInBinary(Img,binaryImg):
     contours,hierarchy=cv2.findContours(binaryImg,cv2.RETR_LIST,cv2.CHAIN_APPROX_NONE)
     if len(contours)!=0:
