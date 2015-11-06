@@ -10,6 +10,10 @@ def mat2gray(mat):
     return (mat-minv)/gap
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/modify_template222
 if __name__=="__main__":
     img=np.zeros((31,31),dtype=np.uint8)
     cv2.imshow('img',img)
