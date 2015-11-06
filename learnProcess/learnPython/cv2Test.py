@@ -9,6 +9,8 @@ def mat2gray(mat):
         gap=1
     return (mat-minv)/gap
 
+
+
 if __name__=="__main__":
     img=np.zeros((31,31),dtype=np.uint8)
     cv2.imshow('img',img)
