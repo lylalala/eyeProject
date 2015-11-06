@@ -8,4 +8,5 @@ list.append(listTop)
 print list
 print list[0]
 print list[0][0]
+
 print list[0][0][0]
