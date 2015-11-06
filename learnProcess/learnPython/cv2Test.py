@@ -1,3 +1,4 @@
+#master
 import numpy as np
 import cv2
 
@@ -9,15 +10,6 @@ def mat2gray(mat):
         gap=1
     return (mat-minv)/gap
 
-
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/modify_template222
->>>>>>> origin/modify_template
 if __name__=="__main__":
     img=np.zeros((31,31),dtype=np.uint8)
     cv2.imshow('img',img)
