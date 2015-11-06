@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 
+
 def mat2gray(mat):
     maxv  = mat.max()
     minv  = mat.min()
