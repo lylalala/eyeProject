@@ -11,3 +11,9 @@ rm -rf *
 cd ..
 cd max
 rm -rf *
+cd ..
+cd center
+rm -rf *
+cd ..
+cd ring
+rm -rf *
