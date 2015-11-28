@@ -69,6 +69,8 @@ if __name__=="__main__":
     temp=newTemplate(width,disk)
     for i in xrange(0,len(temp)):
         cv2.imshow('ts',temp[i]*255)
-        cv2.waitKey(1000)
+        cv2.waitKey()
         print 'i=%d'%i
         print temp[i].shape
+    cv2.imwrite('/Users/ly/MyGithub/eyeProject/learnProcess/learnPython/ring/ring.jpg',temp[1]*255)
+

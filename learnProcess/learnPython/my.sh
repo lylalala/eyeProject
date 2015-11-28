@@ -17,3 +17,15 @@ rm -rf *
 cd ..
 cd ring
 rm -rf *
+cd ..
+cd leftEyeImageRectified
+rm -rf *
+cd ..
+cd leftEyeRectified
+rm -rf
+cd ..
+cd imgeq
+rm -rf *
+cd ..
+cd imglarge
+rm -rf *
