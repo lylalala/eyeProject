@@ -1,3 +1,11 @@
+//
+//  SampleOpenCVRoute.m
+//  GazeEstimationOnCocoa
+//
+//  Created by JiangZhiping on 15/11/4.
+//  Copyright © 2015年 JiangZhiping. All rights reserved.
+//
+
 #import "OpenCVProcess_DirectPass.h"
 #import "string.h"
 #import "ASMGazeTracker.h"
@@ -6,7 +14,7 @@ using namespace std;
 using namespace cv;
 
 //definition
-//#define _DEBUG
+#define _DEBUG
 #define left "1"
 #define right "2"
 #define OLDtemplate "0"
@@ -351,6 +359,7 @@ vector<float> irisRadiiLog;
         if(frameCount==stableFrame){
             cout<<"regulate the irisRange!"<<endl;
             //regulateIrisRange(templateImg);
+            [self regulateIrisRange:templateImg];
         }
         
         string frameCountStr=[OpenCVProcess_DirectPass int2str:frameCount];
