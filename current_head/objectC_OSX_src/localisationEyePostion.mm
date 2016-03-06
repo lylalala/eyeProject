@@ -7,11 +7,7 @@
 //
 
 #import "OpenCVProcess_DirectPass.h"
-#import "string.h"
 #import "ASMGazeTracker.h"
-#import <vector>
-using namespace std;
-using namespace cv;
 
 //definition
 #define _DEBUG
@@ -27,13 +23,39 @@ using namespace cv;
 int irisRange[]={24,35};
 int maskLength=30;
 int kernel[3][3]={{0,1,0},{1,1,1},{0,1,1}};
-int rangeSize;
-vector<cv::Mat> templateImg;
-vector<float> irisRadiiLog;
+
+//=====================================function content==================================================
+/*
+ -(instancetype) init;
+ 
+ //assistant function
+ +(string) int2str:(const int)int_temp;
+ +(vector<float>) normFit:(vector<float>)numList;//caculate average and variance
+ 
+ //generate old/new template
+ -(void) generateTemplateSet:(vector<cv::Mat>&)temp;
+ -(void) regulateIrisRange:(vector<cv::Mat>&)temp;
+ -(void) newTemplate:(vector<Mat>&)temp IrisRange:(vector<int>) theIrisRange newOrOld:(string) oldOrNew;
+ 
+ //convolution processing
+ -(vector<int>) findMax:(vector<cv::Mat>&)imgVector maxDiff:(cv::Mat&)imgMax maxPosition:(cv::Mat&)imgMaxPosition whichFrame:(string)countStr whichEye:(string)numStr;
+ -(vector<int>) DaugmanIrisCore:(cv::Mat&)img templateCircle:(vector<cv::Mat>)temp whichFrame:(string)frameCountStr whichEye:(string)leftOrRight;
+ 
+ //pre-processing
+ -(Mat&) equalizeRGBImage:(Mat&) Img;
+ -(vector<Mat>) preProcessing:(Mat)img whichFrame:(string)frameCountStr whichEye:(string)leftOrRight;
+ 
+ //core function
+ -(vector<float>)DaugmanIrisLocalization:(cv::Mat)eyeRectified templateCircle:(vector<Mat>)temp whichFrame:(string)frameCountStr whichEye:(string)leftOrRight;
+ */
+
 
 //============================================================================================
 @implementation OpenCVProcess_DirectPass {
-    //NSString
+    int rangeSize;
+    vector<cv::Mat> templateImg;
+    vector<float> irisRadiiLog;
+    
     string userProfilePath,cameraProfilePath;
     ASM_Gaze_Tracker pupilTracker;
     int frameCount;
@@ -137,7 +159,7 @@ vector<float> irisRadiiLog;
 #endif
         temp.push_back(ring);
     }
-
+    
 }
 
 //============================================================================================
@@ -328,7 +350,7 @@ vector<float> irisRadiiLog;
     res.push_back(center.y-2);
     res.push_back(radius);
     return res;
-
+    
 }
 
 //============================================================================================
@@ -347,7 +369,7 @@ vector<float> irisRadiiLog;
         leftEyeRectified=pupilTracker.leftEyeImageRectified;
         rightEyeRectified=pupilTracker.rightEyeImageRectified;
         rectifiedImage=pupilTracker.rectifiedImage;
-    
+        
 #ifdef _DEBUG
         //1. 输出原始图像
         //imshow("pupilTracker.leftEyeImageRectified.left", leftEyeRectified);
